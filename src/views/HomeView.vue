@@ -1,5 +1,5 @@
-<template>
-  <hello-world />
+<template lang="pug">
+  hello-world 
 </template>
 
 <script>
@@ -9,7 +9,7 @@
     name: 'HomeView',
 
     components: {
-      HelloWorld,
+      HelloWorld
     },
   }
 </script>
