@@ -1,15 +1,15 @@
 <template lang="pug">
-  hello-world 
+hello-world(@switch="$emit('switch')")
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+import HelloWorld from "../components/HelloWorld";
 
-  export default {
-    name: 'HomeView',
+export default {
+  name: "HomeView",
 
-    components: {
-      HelloWorld
-    },
-  }
+  components: {
+    HelloWorld,
+  },
+};
 </script>
