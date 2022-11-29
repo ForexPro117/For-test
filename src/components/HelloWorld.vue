@@ -9,12 +9,12 @@
           div Сайт тестирования 
           div нестабильных компонентов
         div(class="subheading font-weight-regular") Для начала нужно выбрать необходимый тест кейс
-    .d-flex.flex-row-reverse.justify-center.flex-wrap
-       .mr-3.mt-2(v-for="n in 10" ) 
-          v-btn.white--text(:color="'#'+(Math.floor(Math.random() * 999))") тест {{n+1}}
+    .d-flex.justify-center.flex-wrap
+       .mr-3.mt-2(v-for="n in 5" ) 
+        router-link(to="/test/case/1")
+          v-btn.white--text(:color="'#'+(Math.floor(Math.random() * 999))") тест {{n}}
     
     
-    router-link(to="/test/case/1") aa
 
 
 
