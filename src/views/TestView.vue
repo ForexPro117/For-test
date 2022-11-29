@@ -1,6 +1,6 @@
 <template lang="pug">
 v-container
-  TestCase.pt-7.mx-auto.short(v-if="testOpen[0].start")
+  TestCase.pt-7.mx-auto.short(v-if="testOpen == 1")
 </template>
 
 <script>
@@ -12,11 +12,11 @@ export default {
   },
   data() {
     return {
-      testOpen: [{ start: false }, { start: false }, { start: false }],
+      testOpen: 1
     };
   },
   mounted() {
-    this.testOpen[this.$route.params.num - 1].start = true;
+    this.testOpen = this.$route.params.num;
   },
 };
 </script>
