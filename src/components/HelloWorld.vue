@@ -10,28 +10,25 @@
           div нестабильных компонентов
         div(class="subheading font-weight-regular") Для начала нужно выбрать необходимый тест кейс
     .d-flex.flex-row-reverse.justify-center.flex-wrap
-       .mr-3.mt-2(v-for="i,index in testOpen" ) 
-          v-btn.white--text(:color="'#'+(Math.floor(Math.random() * 999))" @click="i.start=!i.start") тест {{index+1}}
+       .mr-3.mt-2(v-for="n in 10" ) 
+          v-btn.white--text(:color="'#'+(Math.floor(Math.random() * 999))") тест {{n+1}}
     
-    TestCase.pt-7.mx-auto.short(v-if="!testOpen[0].start")
+    
+    router-link(to="/test/case/1") aa
 
 
 
 </template>
 
 <script>
-import TestCase from '../components/TestCase'
   export default {
     name: 'HelloWorld',
 
     components:{
-      TestCase
     },
 
     data(){
       return{
-        items: ["arr","addd" ],
-        testOpen: [{start:false},{start:false},{start:false}],
       }
     },
     methods:{

@@ -1,7 +1,7 @@
 <template lang="pug">
   v-app
     v-app-bar(app  color="primary" dark)  
-      .mx-auto.logo Даёшь сервелаты в массы!
+      .mx-auto.logo Даешь сервелаты в массы!
     v-main
       router-view
 </template>
