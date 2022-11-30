@@ -1,23 +1,33 @@
 <template lang="pug">
 v-container
-  TestCase.pt-7.mx-auto.short(v-if="testOpen == 1")
+  TestCase.pt-7.mx-auto.short(v-if="testOpen == 1" @result="viewResult")
+  TestCase2.pt-7.mx-auto.short(v-if="testOpen == 2" @result="viewResult")
+  v-input {{result}} 
 </template>
 
 <script>
-import TestCase from "../components/TestCase";
+import TestCase from "../components/TestCase"
+import TestCase2 from "../components/TestCase2.vue";
 export default {
   name: "TestView",
   components: {
     TestCase,
+    TestCase2,
   },
   data() {
     return {
-      testOpen: 1
+      testOpen: 1,
+      result:{}
     };
   },
   mounted() {
     this.testOpen = this.$route.params.num;
   },
+  methods:{
+    viewResult(val){
+      this.result = val
+    }
+  }
 };
 </script>
 <style scoped>
