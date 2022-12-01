@@ -5,7 +5,7 @@
         :counter="11"
         :rules="phoneRules"
         placeholder="89991234567"
-        label="Номер"
+        label="Номер телефона"
         required
       ></v-text-field>
   
