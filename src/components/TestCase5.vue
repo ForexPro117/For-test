@@ -1,20 +1,10 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
+    <v-text-field v-model="firstName" label="Фамилия"></v-text-field>
 
-    <v-text-field
-    v-model="firstName"
-    label="Фамилия"
-    ></v-text-field>
+    <v-text-field v-model="secondName" label="Имя"></v-text-field>
 
-    <v-text-field
-    v-model="secondName"
-    label="Имя"
-    ></v-text-field>
-
-    <v-text-field
-    v-model="thirdName"
-    label="Отчество"
-    ></v-text-field>
+    <v-text-field v-model="thirdName" label="Отчество"></v-text-field>
 
     <v-menu
       ref="menu"
@@ -48,6 +38,14 @@
       ></v-date-picker>
     </v-menu>
 
+    <div>
+      <label>Оцените сайт</label>
+
+      <v-rating v-model="rating"></v-rating>
+
+      <label style="color:red" v-if="this.rating < 4"> Из-за вас я теперь голодный!!! </label>
+    </div>
+
     <v-btn
       :disabled="!valid"
       color="success"
@@ -73,9 +71,10 @@ export default {
     valid: true,
     date: null,
     menu: false,
-    firstName: '',
-    secondName: '',
-    thirdName: '',
+    firstName: "",
+    secondName: "",
+    thirdName: "",
+    rating: 5,
   }),
 
   methods: {
@@ -84,6 +83,13 @@ export default {
     },
     validate() {
       this.$refs.form.validate();
+      this.$emit("result",{
+          Фамилия:this.firstName,
+          Имя: this.secondName,
+          Отчество: this.thirdName,
+          Дата_рождения: this.date,
+          Оценка: this.rating
+        })
     },
     reset() {
       this.$refs.form.reset();
