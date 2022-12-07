@@ -9,6 +9,7 @@
     ></v-file-input>
 
     <v-text-field
+      class="mt-10"
       v-model.number="lengthOtp"
       type="number"
       :rules="[(v) => !!v || 'Обязательно для заполнения']"
@@ -51,7 +52,7 @@ export default {
     fileSize: [
       (v) =>
         !v ||
-        !v.some((file) => file.size > 5e6) ||
+        !v.some((file) => file.size > 3e6) ||
         "Файл не должен быть размером более 5 Мб",
     ],
     otpRule: [

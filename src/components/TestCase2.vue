@@ -56,7 +56,7 @@
       phone: "",
       phoneRules: [
         (v) => !!v || "Номер телефона должен быть заполнен",
-        (v) => (v && v.length == 11) || "Номер телефона должен быть состоять из ровно 11 цифр",
+        (v) => (v && v.length == 15) || "Номер телефона должен быть состоять из ровно 11 цифр",
         (v) => /8[0-9]{10}/.test(v) || "Номер телефона должен быть правильным"
       ],
       textRules: [
@@ -80,7 +80,12 @@
         this.$refs.form.resetValidation();
       },
       getResult(){
-        this.$emit("result",{phone:this.phone})
+        this.$emit("result",{
+          Номер:this.phone,
+          "Тыкнули?":this.switch1? "тыкнули":"не тыкнули",
+          Текст:this.text,
+          
+        })
       },
     },
   };

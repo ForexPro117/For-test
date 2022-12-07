@@ -1,19 +1,13 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
-    <vue-recaptcha sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></vue-recaptcha>
-
-    <v-text-field
-      v-model="captcha"
-      :counter="10"
-      :rules="nameRules"
-      label="Текст"
-      required
-    ></v-text-field>
+    <v-text-field :counter="10"
+    :rules="[(v) => (v && v.length < 15) || 'Поле должно быть не более 10 симвоов']" label="Текст" required></v-text-field>
 
     <v-select
       v-model="select"
       :items="items"
-      :rules="[(v) => !!v || 'Обязательно для заполнения']"
+      :rules="[(v) => !!v || 'Обязательно для заполнения',
+      ]"
       label="Статус"
       required
     ></v-select>
@@ -24,19 +18,21 @@
       label="Вы уверены?"
       required
     ></v-checkbox>
-
-    <v-btn
-      :disabled="!valid"
-      color="success"
-      class="mr-4 mt-2"
-      @click="validate"
-    >
+    <div class="d-flex">
+      <v-img
+      max-height="50"
+      max-width="130"
+      src="https://vk.com/captcha.php?sid=115072837620&s=1"
+    ></v-img>
+    <v-text-field class="ml-10" style="max-width:200px"
+    :rules="[(v) => (!!v && v === 'pidor') || 'Неверный код!']" label="Код" placeholder="Placeholder" outlined></v-text-field>
+    </div>
+    
+    <v-btn :disabled="!valid" color="success" class="mr-4 mt-2" @click="validate">
       Проверить
     </v-btn>
 
-    <v-btn color="error" class="mr-4 mt-2" @click="reset">
-      Сбросить форму
-    </v-btn>
+    <v-btn color="error" class="mr-4 mt-2" @click="reset"> Сбросить форму </v-btn>
 
     <v-btn color="warning" class="mt-2" @click="resetValidation">
       Сбросить валидацию
@@ -44,30 +40,30 @@
   </v-form>
 </template>
 <script>
-import { VueRecaptcha } from "vue-recaptcha";
 export default {
-  components: {
-    VueRecaptcha,
-  },
-  name: "TestCase",
+  components: {},
+  name: 'TestCase',
   data: () => ({
-    sitekey: "",
+    sitekey: '',
     valid: true,
     select: null,
-    items: ["Тут", "Я", "", "Или нет"],
+    items: ['1', '2', '3', '4'],
     checkbox: false,
+    nameRules: '',
   }),
 
+  created() {
+  },
   methods: {
     validate() {
-      this.$refs.form.validate();
+      this.$refs.form.validate()
     },
     reset() {
-      this.$refs.form.reset();
+      this.$refs.form.reset()
     },
     resetValidation() {
-      this.$refs.form.resetValidation();
+      this.$refs.form.resetValidation()
     },
   },
-};
+}
 </script>

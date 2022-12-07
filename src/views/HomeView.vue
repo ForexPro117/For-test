@@ -1,5 +1,5 @@
 <template lang="pug">
-hello-world(@switch="$emit('switch')")
+hello-world
 </template>
 
 <script>

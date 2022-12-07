@@ -1,5 +1,5 @@
 <template lang="pug">
-v-container
+div
   v-row.text-center
     v-col(cols="12")
       v-img.my-3(:src="require('../assets/logo.svg')", contain, height="150")
@@ -12,7 +12,7 @@ v-container
   .d-flex.justify-center.flex-wrap
     .mr-3.mt-2(v-for="n in 5") 
       router-link(:to="'/test/case/' + n")
-        v-btn.white--text.text(@click="$emit('switch')" :color="'#' + Math.floor(Math.random() * 999)") тест {{ n }}
+        v-btn.white--text.text( :color="'#' + Math.floor(Math.random() * 999)") тест {{ n }}
 </template>
 
 <script>

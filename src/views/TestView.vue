@@ -4,7 +4,10 @@ v-container
   TestCase2.pt-7.mx-auto.short(v-if="testOpen == 2" @result="viewResult")
   TestCase3.pt-7.mx-auto.short(v-if="testOpen == 3" @result="viewResult")
   TestCase4.pt-7.mx-auto.short(v-if="testOpen == 4" @result="viewResult")
-  v-input {{result}} 
+  .pt-7(v-if="true")
+    v-input Результат:
+    div(v-for="res,key in result")
+      v-input {{key}} : {{res}}
 </template>
 
 <script>
@@ -23,7 +26,8 @@ export default {
   data() {
     return {
       testOpen: 1,
-      result:{}
+      result:{},
+      isShow:false
     };
   },
   mounted() {
@@ -32,6 +36,7 @@ export default {
   methods:{
     viewResult(val){
       this.result = val
+      this.isShow = 1
     }
   }
 };

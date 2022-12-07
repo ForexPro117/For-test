@@ -71,6 +71,12 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate();
+      this.$emit("result",{
+        Имя:this.name,
+        Email:this.email,
+        Статус:this.select,
+        'Вы уверены?':this.checkbox? 'да':'нет'
+        })
     },
     reset() {
       this.$refs.form.reset();
