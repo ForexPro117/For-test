@@ -1,6 +1,7 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
     <v-file-input
+      v-model="file"
       show-size
       counter
       multiple
@@ -58,6 +59,7 @@ export default {
     otpRule: [
         (v) => !!v || 'Обязательно для заполнения'
     ],
+    file:null,
   }),
 
   computed: {
@@ -69,12 +71,21 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate();
+      let text = "";
+      this.file.forEach(el => {
+        text+=" "+el.name
+      });
+      this.$emit("result",{
+        Файлы:text,
+        Код:this.otp,
+        })
     },
     reset() {
       this.$refs.form.reset();
     },
     resetValidation() {
       this.$refs.form.resetValidation();
+      
     },
   },
 };

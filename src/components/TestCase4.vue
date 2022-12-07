@@ -1,6 +1,6 @@
 <template>
   <v-form ref="form" v-model="valid" lazy-validation>
-    <v-text-field :counter="10"
+    <v-text-field :counter="10" v-model="text"
     :rules="[(v) => (v && v.length < 15) || 'Поле должно быть не более 10 симвоов']" label="Текст" required></v-text-field>
 
     <v-select
@@ -24,8 +24,8 @@
       max-width="130"
       src="https://vk.com/captcha.php?sid=115072837620&s=1"
     ></v-img>
-    <v-text-field class="ml-10" style="max-width:200px"
-    :rules="[(v) => (!!v && v === 'pidor') || 'Неверный код!']" label="Код" placeholder="Placeholder" outlined></v-text-field>
+    <v-text-field class="ml-10" style="max-width:200px" v-model="code"
+    :rules="[(v) => (!!v && (v === 'hne' || v.length > 10)) || 'Неверный код!']" label="Код" placeholder="Placeholder" outlined></v-text-field>
     </div>
     
     <v-btn :disabled="!valid" color="success" class="mr-4 mt-2" @click="validate">
@@ -50,6 +50,8 @@ export default {
     items: ['1', '2', '3', '4'],
     checkbox: false,
     nameRules: '',
+    text:"",
+    code:""
   }),
 
   created() {
@@ -57,6 +59,12 @@ export default {
   methods: {
     validate() {
       this.$refs.form.validate()
+      this.$emit("result",{
+        Текст:this.text,
+        Статус:this.select,
+        'Вы уверены?':this.checkbox? 'да':'нет',
+        Код:this.code
+        })
     },
     reset() {
       this.$refs.form.reset()
