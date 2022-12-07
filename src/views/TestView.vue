@@ -4,6 +4,7 @@ v-container
   TestCase2.pt-7.mx-auto.short(v-if="testOpen == 2" @result="viewResult")
   TestCase3.pt-7.mx-auto.short(v-if="testOpen == 3" @result="viewResult")
   TestCase4.pt-7.mx-auto.short(v-if="testOpen == 4" @result="viewResult")
+  TestCase5.pt-7.mx-auto.short(v-if="testOpen == 5" @result="viewResult")
   .pt-7(v-if="true")
     v-input Результат:
     div(v-for="res,key in result")
@@ -14,7 +15,8 @@ v-container
 import TestCase from "../components/TestCase"
 import TestCase2 from "../components/TestCase2.vue"
 import TestCase3 from "../components/TestCase3.vue"
-import TestCase4 from "../components/TestCase4.vue";
+import TestCase4 from "../components/TestCase4.vue"
+import TestCase5 from "../components/TestCase5.vue";
 export default {
   name: "TestView",
   components: {
@@ -22,6 +24,7 @@ export default {
     TestCase2,
     TestCase3,
     TestCase4,
+    TestCase5,
   },
   data() {
     return {
